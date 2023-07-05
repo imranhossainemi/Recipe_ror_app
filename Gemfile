@@ -78,4 +78,4 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Sass to process CSS
-# gem "sassc-rails"
+gem "sassc-rails"
