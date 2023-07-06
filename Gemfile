@@ -9,6 +9,16 @@ gem 'sprockets-rails'
 
 gem 'devise'
 
+gem 'cancancan'
+
+gem 'devise-jwt'
+
+gem 'pagy'
+
+gem 'rails-controller-testing'
+
+gem 'rspec-rails'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.6'
 
