@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users
-  root to: "home#index"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-end
+  root 'public_recipes#index'
+  # root to: "home#index"
+   resources :recipes, only: [:index, :show, :create, :new, :destroy] do
+     resources :recipe_foods, except: :update
+   end
+ 
+   resources :recipes do
+     member do
+       patch 'toggle_visibility'
+     end
+   end
+ 
+ end
+  
