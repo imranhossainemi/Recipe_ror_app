@@ -1,6 +1,7 @@
 class FoodsController < ApplicationController
+  before_action :authenticate_user!, except: [:show]
   def index
-    @foods = Food.all
+    @foods = current_user.foods
   end
 
   def new
@@ -8,18 +9,15 @@ class FoodsController < ApplicationController
   end
 
   def create
-    @food = current_user.foods.new(food_params)
+    @food = Food.new(food_params)
+    @food.user = current_user
 
-    respond_to do |format|
-      format.html do
-        if @food.save
-          flash[:success] = 'Food was successfully created.'
-          redirect_to foods_path
-        else
-          flash.now[:error] = 'Failed to create new food.'
-          render :new, status: :unprocessable_entity
-        end
-      end
+    if @food.save
+      flash[:success] = 'Food succesfully added'
+      redirect_to foods_path
+    else
+      flash[:error] = 'Error: Food could not be added'
+      render :new
     end
   end
 
@@ -27,16 +25,8 @@ class FoodsController < ApplicationController
     @food = Food.find(params[:id])
     @food.destroy
 
-    respond_to do |format|
-      format.html do
-        if @food.destroy
-          flash[:success] = 'Food was successfully deleted.'
-        else
-          flash[:error] = 'Failed to delete selected food.'
-        end
-        redirect_to foods_path
-      end
-    end
+    flash[:notice] = 'You deleted food successfully'
+    redirect_back(fallback_location: root_path)
   end
 
   private
@@ -44,5 +34,4 @@ class FoodsController < ApplicationController
   def food_params
     params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
   end
-
 end
