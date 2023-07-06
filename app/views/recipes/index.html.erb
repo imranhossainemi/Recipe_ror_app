@@ -1,5 +1,4 @@
 <h1><%="Welcome #{current_user.name} to your Recipes"%></h1>
-<%= render '/shared/navbar'%>
 <div class="container"style="width: 800px; margin-top: 20px;">
 <% @recipes.each do |recipe| %>
   <div class="card mb-3">
