@@ -1,24 +1,30 @@
-<h1>Food List</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Measurement Unit</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @foods.each do |food| %>
+<div class="container mt-4">
+  <div class="d-flex justify-content-end mb-3">
+    <%= link_to 'Add Food', new_food_path, class: 'btn btn-primary' %>
+  </div>
+  <table class="table table-striped">
+    <thead class="bg-primary text-white">
       <tr>
-        <td><%= food.name %></td>
-        <td><%= food.measurement_unit %></td>
-        <td><%= food.price %></td>
-        <td><%= food.quantity%></td>
-        <td><%= link_to 'Delete', food, method: :delete, data: { confirm: 'Are you sure you want to delete this food?' } %></td>
+        <th scope="col">Food</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Measurement Unit</th>
+        <th scope="col">Price</th>
+        <th scope="col">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to 'Add Food', new_food_path %>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.quantity.to_i %></td>
+          <td><%= food.measurement_unit %></td>
+          <td><%= "$#{food.price.to_i}" %></td>
+          <td>
+            <%= button_to "Delete", food_path(food.id), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
