@@ -5,6 +5,10 @@ ruby '3.2.2'
 
 gem 'cssbundling-rails', '~> 1.2'
 
+gem 'bootstrap'
+
+gem 'pg'
+
 # Authorization library for Ruby on Rails.
 gem 'cancancan'
 
