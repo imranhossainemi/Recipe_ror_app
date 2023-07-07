@@ -22,10 +22,11 @@
     </div>
   </div>
    <% if !current_user.nil? && current_user.id == @recipe.user_id %>
-<div class="buttons mt-5" style='display:flex; justify-content: space-between;'>
-  <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe.id), class: 'btn btn-primary' %>
-</div>
-<%end%>
+    <div class="buttons mt-5" style='display:flex; justify-content: space-between;'>
+      <%= link_to 'Add Ingredient', new_recipe_recipe_food_path(@recipe.id), class: 'btn btn-primary' %>
+      <a class="btn btn-primary" href="/shopping_lists">Generate Shopping List</a>
+    </div>
+  <%end%>
   <div class="table">
     <table class="table table-striped">
       <thead>
