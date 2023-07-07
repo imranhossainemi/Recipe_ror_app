@@ -154,7 +154,7 @@ I would like to thank Microverse.
 
 ## ❓ FAQ <a name="faq"></a>
 
-- **[What is Blog App Project?]**
+- **[What is this App Project?]**
 
 <p align="right">(<a href="#readme-top"></a>)</p>
 
